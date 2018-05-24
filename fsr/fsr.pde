@@ -1,8 +1,8 @@
 import processing.serial.*;
-import fsr;
-
 
 Serial serial;
+
+ PImage img;
 
 int x1 =0;
 int x2 = 400;
@@ -17,7 +17,7 @@ void setup()
   println(Serial.list());
   serial = new Serial(this , "/dev/ttyACM0",9600);
   serial.bufferUntil('\n');
-  
+  img = loadImage("foot1.jpg");
   
   background(0);
   fill(100);
@@ -26,8 +26,9 @@ void setup()
 void draw()
 {
       pressed = map(inByte2,0,1024,0,255);
+      image(img,0,0,200,200);
       fill(pressed,0,0);
-      ellipse(40,15,10,15);
+      ellipse(60,20,10,15);
       
   
    stroke(0,200,0);
